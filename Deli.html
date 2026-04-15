@@ -159,18 +159,16 @@
             overflow: hidden; /* Vital para esconder lo que recortamos */
         }
         
-        /* EL ZOOM/CROP ESTÁ AQUÍ. Si necesitas recortar más o menos a los lados, 
-           cambia el scale(1.35) a scale(1.2) o scale(1.5) */
         .bento-img-container video, .bento-img-container img { 
             width: 100%; 
             height: 100%; 
             object-fit: cover; 
             border-radius: 20px; 
-            transform: scale(1.2); /* <--- EL MACHETAZO QUE RECORTA LA PIÑA Y CANELA */
+            transform: scale(1.2); 
             transition: transform 0.5s; 
         }
         .bento-img-container:hover video, .bento-img-container:hover img { 
-            transform: scale(1.38); /* Mantiene el efecto hover un poquito más grande */
+            transform: scale(1.38); 
         }
 
         .box-1 { animation-delay: 0s; grid-column: 1 / 2; grid-row: 2 / 3; } .box-1::before { animation-delay: 0s; }
@@ -293,15 +291,27 @@
         .btn-submit { background: var(--deli-yellow); color: var(--deli-dark-green); font-family: var(--font-heading); padding: 20px; border: none; border-radius: 50px; font-size: 1.2rem; font-weight: 700; margin-top: 15px; transition: transform 0.3s, background 0.3s; width: 100%; cursor: pointer; box-shadow: 0 10px 20px rgba(0,0,0,0.1);}
         .btn-submit:hover { transform: translateY(-3px); background: var(--deli-dark-green); color: var(--deli-white);}
 
-        .final-cta { background: var(--deli-cream); }
-        .cta-box { background: var(--deli-yellow); padding: 60px 5vw; border-radius: 40px; text-align: center; width: 100%; position: relative; overflow: hidden; box-shadow: 0 20px 40px rgba(3,53,35,0.15);}
+        /* =========================================
+           CTA FINAL FULL-WIDTH (MODIFICADO)
+           ========================================= */
+        .final-cta { width: 100%; padding: 0; margin: 0; background: var(--deli-yellow); }
+        .cta-box { background: var(--deli-yellow); padding: 80px 5%; border-radius: 0; text-align: center; width: 100%; position: relative; overflow: hidden; box-shadow: none;}
         .cta-box::before { content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 5px; background: linear-gradient(90deg, transparent, var(--deli-white), transparent); animation: laserScan 4s linear infinite; }
-        .cta-box h2 { font-family: var(--font-heading); font-size: clamp(2.5rem, 5vw, 4rem); color: var(--deli-dark-green); margin-bottom: 20px; line-height: 1.1; }
+        .cta-box h2 { font-family: var(--font-heading); font-size: clamp(2.5rem, 5vw, 4rem); color: var(--deli-dark-green); margin-bottom: 20px; line-height: 1.1; text-transform: uppercase;}
         .cta-box h2 span { color: var(--deli-white); }
         .cta-box p { color: var(--deli-dark-green); font-size: 1.2rem; font-weight: 700; margin-bottom: 35px; max-width: 600px; margin-inline: auto; }
         
         .btn-outline { display: inline-flex; justify-content: center; align-items: center; gap: 10px; padding: 18px 40px; background: var(--deli-dark-green); color: var(--deli-white); font-family: var(--font-heading); font-size: 1.2rem; text-decoration: none; border-radius: 50px; transition: all 0.3s ease; box-shadow: 0 10px 20px rgba(0,0,0,0.2);}
         .btn-outline:hover { background: var(--deli-med-green); transform: translateY(-5px); }
+
+        /* FOOTER CORPORATIVO (NUEVO) */
+        footer { background: var(--deli-dark-green); padding: 80px 5% 40px; color: var(--deli-white); display: block; position: relative; z-index: 2; border-top: 1px solid rgba(255,255,255,0.05); }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 50px; max-width: 1400px; margin: 0 auto; }
+        .footer-col h4 { color: var(--deli-yellow); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 25px; font-family: var(--font-heading); font-weight: 700;}
+        .footer-col a { color: var(--deli-light-green); text-decoration: none; display: block; margin-bottom: 15px; font-size: 0.9rem; transition: color 0.3s, transform 0.3s; font-family: var(--font-body); font-weight: 600;}
+        .footer-col a:hover { color: var(--deli-white); transform: translateX(5px); }
+        .footer-col p { color: var(--deli-light-green); font-family: var(--font-body); font-weight: 600; line-height: 1.6;}
+        .footer-bottom { text-align: center; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 60px; padding-top: 30px; color: var(--deli-light-green); font-size: 0.8rem; font-family: var(--font-body); font-weight: 600;}
 
         .fade-in { opacity: 0; transform: translate3d(0, 30px, 0); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
         .fade-in.is-visible { opacity: 1; transform: translate3d(0, 0, 0); }
@@ -373,10 +383,10 @@
         <section class="hero-product">
             <div class="hero-video-bg">
                 <video autoplay muted loop playsinline id="heroVideo">
-                    <source src="https://mangobc.com/wp-content/uploads/2026/03/VideoDeli.mp4" type="video/mp4">
+                    <source src="loopdeli.mp4" type="video/mp4">
                 </video>
             </div>
-            <div class="hero-bg-text">ANTI BAJÓN</div>
+            <div class="hero-bg-text">MANGO BC</div>
             
             <div class="fan-container fade-in" id="fanContainer">
                 <img src="granola-web.png" class="bar bar-1" data-flavor="DELI GRANOLA" data-color="var(--deli-yellow)" decoding="async">
@@ -388,11 +398,11 @@
 
             <div class="hero-title-container fade-in">
                 <div class="flavor-display" id="flavorDisplay">CONOCE LA FAMILIA</div>
-                <h1 class="hero-title">DELI BARRAS<br><span>TU SNACK ANTI BAJÓN</span></h1>
+                <h1 class="hero-title">DELI BARRAS<br><span>LA BARRA QUE SE VENDE SOLA</span></h1>
             </div>
         </section>
 
-        <div class="yellow-marquee">
+        <div class="yellow-marquee">    
             <div class="marquee-text">
                 LA BARRA MÁS DELI • 120 GRAMOS DE ENERGÍA • MÁS ENERGÍA • NATURAL, PRÁCTICA Y DELICIOSA • NUTRE TU DÍA, SIN COMPLICACIONES • 
                 LA BARRA MÁS DELI • 120 GRAMOS DE ENERGÍA • MÁS ENERGÍA • NATURAL, PRÁCTICA Y DELICIOSA • NUTRE TU DÍA, SIN COMPLICACIONES •
@@ -571,14 +581,38 @@
         </section>
 
         <section class="final-cta">
-            <div class="content-wrapper">
-                <div class="cta-box fade-in">
-                    <h2>DOMINA TU <span>MERCADO</span></h2>
-                    <p>Asegura tus ganancias con el producto de mayor rotación a nivel nacional.</p>
-                    <a href="https://api.whatsapp.com/send?phone=5214433327430&text=Hola%2C%20quiero%20vender%20DeliBarras%20%F0%9F%A5%B3" class="btn-outline">¡Escríbenos por WhatsApp!</a>
-                </div>
+            <div class="cta-box fade-in">
+                <h2>DOMINA TU <span>MERCADO</span></h2>
+                <p>Asegura tus ganancias con el producto de mayor rotación a nivel nacional.</p>
+                <a href="https://api.whatsapp.com/send?phone=5214433327430&text=Hola%2C%20quiero%20vender%20DeliBarras%20%F0%9F%A5%B3" class="btn-outline">¡Escríbenos por WhatsApp!</a>
             </div>
         </section>
+
+        <footer>
+            <div class="footer-grid fade-in">
+                <div class="footer-col">
+                    <div class="footer-logo" style="margin-bottom: 20px;">
+                        <img src="https://mangobc.com/wp-content/uploads/2026/03/Logos-Vectorizados.png" alt="Mango BC" style="height: 50px; width: auto; filter: brightness(0) invert(1);">
+                    </div>
+                    <p style="font-size: 0.9rem;">Morelia, Michoacán<br>México, CP 58000<br>+52 443 332 7430</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Contacto Directo</h4>
+                    <a href="mailto:socios@mangobusiness.com">Ventas y Socios</a>
+                    <a href="mailto:talento@mangobusiness.com">Atracción de Talento</a>
+                    <a href="mailto:compras@mangobusiness.com">Proveedores y Compras</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Redes Sociales</h4>
+                    <a href="https://www.linkedin.com/company/mango-business-center" target="_blank">LinkedIn</a>
+                    <a href="https://www.instagram.com/mangobusinesscenter" target="_blank">Instagram</a>
+                    <a href="https://www.facebook.com/mangobusinesscenter" target="_blank">Facebook</a>
+                </div>
+            </div>
+            <div class="footer-bottom fade-in">
+                © 2026 MANGO BUSINESS CENTER
+            </div>
+        </footer>
 
     </div> 
     
@@ -586,23 +620,13 @@
     <script src="https://atom-plugin-io.web.app/atom-plugin-web.js"></script>
 
     <script>
-// Preloader Optimizado
-window.addEventListener('load', () => {
-    hideLoader();
-});
+        // Preloader
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            loader.style.opacity = '0';
+            setTimeout(() => loader.style.display = 'none', 500);
+        });
 
-// Si después de 3.5 segundos no ha cargado, forzamos la salida
-setTimeout(() => {
-    hideLoader();
-}, 3500);
-
-function hideLoader() {
-    const loader = document.getElementById('loader');
-    if (loader && loader.style.display !== 'none') {
-        loader.style.opacity = '0';
-        setTimeout(() => loader.style.display = 'none', 500);
-    }
-}
         // ABANICO (5 BARRAS)
         const fanContainer = document.getElementById('fanContainer');
         const bars = Array.from(document.querySelectorAll('.bar'));
