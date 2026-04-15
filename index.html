@@ -217,28 +217,25 @@
         }
 
         /* =========================================================
-           SECCIÓN DE INTRODUCCIÓN (SECCIÓN 2) - TEMA OSCURO
+           SECCIÓN DE INTRODUCCIÓN (SECCIÓN 2) - CON IMAGEN DE FONDO
            ========================================================= */
-  /* =========================================================
-   SECCIÓN DE INTRODUCCIÓN (SECCIÓN 2) - CON IMAGEN DE FONDO
-   ========================================================= */
-.seccion-intro-texto {
-    /* Agregamos la imagen con un overlay oscuro para legibilidad */
-    background-image: linear-gradient(rgba(28, 28, 28, 0.85), rgba(28, 28, 28, 0.85)), url('fondoventas.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed; /* Esto crea un efecto parallax elegante al hacer scroll */
-    
-    padding: 150px 5%; 
-    min-height: 85vh; 
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-}
+        .seccion-intro-texto {
+            /* Agregamos la imagen con un overlay oscuro para legibilidad */
+            background-image: linear-gradient(rgba(28, 28, 28, 0.85), rgba(28, 28, 28, 0.85)), url('fondoventas.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Esto crea un efecto parallax elegante al hacer scroll */
+            
+            padding: 150px 5%; 
+            min-height: 85vh; 
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
 
         .seccion-intro-texto::before {
             content: '';
@@ -317,9 +314,9 @@
         
         .ventas-grid-dios { 
             display: grid; 
-            grid-template-columns: repeat(3, 1fr); 
+            grid-template-columns: repeat(4, 1fr); 
             gap: 30px; 
-            max-width: 1200px; 
+            max-width: 1400px; 
             margin: 0 auto; 
             align-items: stretch;
         }
@@ -567,67 +564,6 @@
 
         .m-text h4 { font-size: 1.5rem; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--dark); }
         .m-text p { color: #666; font-size: 1.1rem; line-height: 1.7; font-weight: 300; }
-
-        /* =========================================================
-           4. UNIDADES DE NEGOCIO (TARJETAS 3D GIRATORIAS) -> DARK
-           ========================================================= */
-        .unidades { background: var(--dark); overflow: hidden; } 
-        .unidades .section-title { color: var(--white); }
-        .unidades .section-desc { color: #CCC; }
-        .carousel-nav { display: none; } 
-        .unidades-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; max-width: 1400px; margin: 0 auto; transition: transform 0.5s ease-in-out; }
-        
-        .unidad-card { perspective: 1500px; background: transparent; height: 480px; cursor: pointer; }
-        .card-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); transform-style: preserve-3d; will-change: transform; }
-        .unidad-card:hover .card-inner, .unidad-card.is-flipped .card-inner { transform: rotateY(180deg); }
-
-        .card-front, .card-back {
-            position: absolute; width: 100%; height: 100%; backface-visibility: hidden; -webkit-backface-visibility: hidden;
-            border-radius: 30px; padding: 40px 30px; display: flex; flex-direction: column;
-            box-shadow: var(--shadow-soft); border: 1px solid rgba(255,255,255,0.05); transition: border-color 0.4s;
-        }
-
-        .card-front { background: #252525; color: var(--white); }
-        .unidad-card:hover .card-front { border-color: var(--mango); }
-        
-        .u-icon { 
-            width: 120px; 
-            height: 120px; 
-            background: transparent; 
-            border-radius: 0; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            margin: 0 auto 30px; 
-            overflow: visible; 
-            padding: 0; 
-        }
-        
-        .u-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain; 
-            filter: brightness(0) invert(1); 
-        }
-
-        .card-front h3 { font-size: 1.8rem; margin-bottom: 10px; color: var(--white); font-weight: 900; }
-        .card-front .u-sub { color: var(--dark); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 25px; letter-spacing: 1px; background: var(--mango); display: inline-block; padding: 4px 10px; border-radius: 6px; align-self: center;}
-        .card-front p { color: #CCC; line-height: 1.7; flex-grow: 1; margin-bottom: 10px;}
-        .flip-hint { font-size: 0.8rem; color: var(--mango); font-weight: 700; text-transform: uppercase; margin-top: auto; display: flex; align-items: center; justify-content: center; gap: 5px;}
-
-        .card-back {
-            background: var(--dark); color: var(--white); transform: rotateY(180deg); justify-content: center;
-            align-items: flex-start; text-align: left; border-color: var(--mango);
-        }
-        .card-back h3 { color: var(--mango); font-size: 1.5rem; margin-bottom: 20px; font-weight: 900; }
-        .card-back ul { list-style: none; padding: 0; margin: 0; }
-        .card-back ul li { margin-bottom: 20px; font-size: 0.95rem; line-height: 1.5; color: #EEE; display: flex; align-items: flex-start; gap: 10px; }
-        .card-back ul li::before { content: '✓'; color: var(--mango); font-weight: bold; font-size: 1.1rem; }
-
-        .carousel-container { position: relative; max-width: 1400px; margin: 0 auto; }
-        .carousel-track { display: flex; gap: 40px; transition: transform 0.5s ease; }
-        .carousel-dot { width: 10px; height: 10px; border-radius: 50%; background: #CCC; cursor: pointer; transition: background-color 0.3s, transform 0.3s; }
-        .carousel-dot.active { background: var(--mango); transform: scale(1.2); }
 
         /* =========================================================
            4.5 SECCIÓN: MARCAS -> LIGHT
@@ -1025,13 +961,16 @@
            ========================================================= */
         footer { background: var(--dark); padding: 80px 5% 40px; color: var(--white); }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 50px; max-width: 1400px; margin: 0 auto; }
-        .footer-col h4 { color: var(--mango); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 25px; }
-        .footer-col a { color: #AAA; text-decoration: none; display: block; margin-bottom: 15px; font-size: 0.9rem; transition: color 0.3s, transform 0.3s; }
+        .footer-col h4 { color: var(--mango); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 25px; font-family: 'Montserrat'; font-weight: 700;}
+        .footer-col a { color: #AAA; text-decoration: none; display: block; margin-bottom: 15px; font-size: 0.9rem; transition: color 0.3s, transform 0.3s; cursor: pointer; }
         .footer-col a:hover { color: var(--white); transform: translateX(5px); }
         .footer-bottom { text-align: center; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 60px; padding-top: 30px; color: #666; font-size: 0.8rem; }
 
+        .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1), transform 0.8s cubic-bezier(0.23, 1, 0.32, 1); will-change: opacity, transform; }
+        .fade-in.is-visible { opacity: 1; transform: translateY(0); }
+
         /* =========================================================
-           AJUSTES RESPONSIVOS ESTÁNDAR
+           DISEÑO RESPONSIVO ESTÁTICO
            ========================================================= */
         @media (max-width: 1440px) {
             section { padding: 80px 5%; }
@@ -1039,12 +978,11 @@
             .metodologia { padding: 100px 5% 0; }
             .sticky-left { top: 120px; padding-bottom: 100px; }
             .scroll-right { margin-top: 150px; padding-bottom: 100px; }
-            .unidad-card { height: 400px; }
-            .card-front, .card-back { padding: 30px 20px; }
-            .u-icon { width: 100px; height: 100px; margin: 0 auto 20px; padding: 0; }
         }
 
         @media (max-width: 1200px) {
+            .ventas-grid-dios { grid-template-columns: repeat(2, 1fr); }
+            
             .expansion-container { flex-wrap: wrap; height: auto; justify-content: center; gap: 20px; padding: 0 10px; }
             .brand-card { flex: 0 0 calc(50% - 10px); width: calc(50% - 10px); height: auto; min-height: 420px; align-items: center; text-align: center; padding: 40px 20px; justify-content: flex-end; }
             .brand-card::before { opacity: 0.85; } 
@@ -1055,10 +993,11 @@
         }
 
         @media (max-width: 992px) {
-            nav { width: 100%; top: 0; left: 0; border-radius: 0; padding: 15px 5%; }
+            nav { width: 100%; top: 0; left: 0; border-radius: 0; padding: 15px 5%; border: none; }
             .hamburger { display: flex; }
             .nav-links { position: fixed; top: 0; left: 100%; width: 100%; height: 100vh; background: var(--white); flex-direction: column; justify-content: center; align-items: center; gap: 40px; transition: left 0.4s ease; z-index: 1001; }
             .nav-links.active { left: 0; }
+            .nav-links a { font-size: 1.5rem; font-family: 'Montserrat', sans-serif; font-weight: 900; }
             
             /* Ajustes DROPDOWN Mobile */
             .dropdown { width: 100%; display: flex; flex-direction: column; align-items: center; }
@@ -1078,12 +1017,7 @@
             .sticky-wrapper { flex-direction: column; }
             .sticky-left { position: relative; top: 0; width: 100%; text-align: center; }
             .scroll-right { width: 100%; margin-top: 0; }
-            .unidades-grid { display: flex !important; overflow-x: auto; scroll-snap-type: x mandatory; gap: 20px; padding: 10px 5%; margin: 0 -5%; scrollbar-width: none; }
-            .unidad-card { flex: 0 0 85vw; scroll-snap-align: center; }
-            .u-icon { width: 90px; height: 90px; margin: 0 auto 25px; padding: 0; }
-            .carousel-nav { display: flex; justify-content: center; gap: 8px; margin-top: 10px; }
-            .carousel-dot { width: 10px; height: 10px; background: #D0D0D0; border-radius: 50%; }
-            .carousel-dot.active { background: var(--mango); }
+            
             .marcas-expansion { padding-top: 80px; padding-bottom: 60px; }
             .expansion-container { flex-direction: column; height: auto; gap: 30px; padding: 0 5%; width: 100%; align-items: center; }
             .brand-card { flex: none; width: 100%; max-width: 400px; min-height: 480px; padding: 40px 30px; align-items: center; text-align: center; border-radius: 25px; justify-content: flex-end; }
@@ -1092,15 +1026,17 @@
             .brand-card .card-num { opacity: 1 !important; }
             .brand-desc, .card-btn { opacity: 1 !important; transform: translateY(0) !important; position: relative; z-index: 5; display: block; }
             .brand-card .card-btn { width: 100%; padding: 15px; }
-            .ventas-grid-dios { grid-template-columns: 1fr; gap: 30px; }
+            
             .job-header { flex-direction: column; text-align: center; gap: 15px; }
             .job-btn-more { width: 100%; }
             .job-card.open .job-details { padding: 20px 15px; }
             
             .client-logo { width: 80px; margin: 0 15px; } 
             .logos-clientes-wrapper { margin-top: 60px; }
+        }
 
-            .ig-post { flex: 0 0 85vw; }
+        @media (max-width: 768px) {
+            .ventas-grid-dios { grid-template-columns: 1fr; }
         }
         
         .hero::before {
@@ -1114,6 +1050,53 @@
             z-index: 0;
             pointer-events: none;
         }
+
+        /* MODAL CONTACTO FLOTANTE */
+        .contact-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); z-index: 999999; display: flex; justify-content: center; align-items: center; opacity: 0; visibility: hidden; transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); }
+        .contact-modal-overlay.active { opacity: 1; visibility: visible; }
+        .contact-modal { background: var(--white); width: 90%; max-width: 500px; border-radius: 20px; border: 1px solid var(--box-border); position: relative; transform: translateY(50px); transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); box-shadow: 0 25px 50px rgba(0,0,0,0.2); overflow: hidden; padding: 40px; text-align: left;}
+        .contact-modal-overlay.active .contact-modal { transform: translateY(0); }
+        .close-modal { position: absolute; top: 15px; right: 20px; background: transparent; border: none; color: #888; font-size: 1.5rem; transition: 0.3s; cursor: pointer; }
+        .close-modal:hover { color: var(--mango); }
+        
+        .modal-content h3 { font-family: 'Montserrat'; font-weight: 900; color: var(--dark); font-size: 1.5rem; margin-bottom: 10px; line-height: 1.2; text-transform: uppercase;}
+        .modal-content h3 span { color: var(--mango); }
+        .modal-content p { color: #666; font-size: 0.9rem; margin-bottom: 25px; line-height: 1.5; }
+        
+        .modal-success { display: none; text-align: center; opacity: 0; transform: translateY(20px); transition: all 0.5s ease; }
+        .modal-success.active { display: block; opacity: 1; transform: translateY(0); }
+        .success-icon { font-size: 3rem; color: var(--mango); margin-bottom: 15px; }
+
+        /* ============================================================
+           OPTIMIZACIÓN PARA PANTALLAS 4K Y ULTRA-WIDE (> 2000px)
+           ============================================================ */
+        @media (min-width: 2000px) {
+            .hero-container, 
+            .ventas-grid-dios, 
+            .que-es-grid,
+            .sticky-wrapper,
+            .expansion-container,
+            .equipo-container,
+            .jobs-container,
+            .footer-grid {
+                max-width: 1800px;
+            }
+
+            .hero-title { font-size: 6.5rem; }
+            .hero-subtitle { font-size: 1.5rem; max-width: 900px; }
+            .hero-form-card { max-width: 650px; padding: 50px; }
+            .hero-form-header h2 { font-size: 2.2rem; }
+            .input-group label { font-size: 0.9rem; }
+            .input-group input, .input-group select { padding: 18px; font-size: 1rem; }
+
+            .venta-dios-card h3 { font-size: 2rem !important; }
+            .venta-dios-card p { font-size: 1.1rem !important; }
+            .vd-features li { font-size: 1.1rem; }
+            
+            nav { max-width: 1800px; left: 50%; transform: translateX(-50%); padding: 20px 50px; }
+            .nav-links a { font-size: 1rem; }
+            .nav-cta { padding: 12px 30px; font-size: 0.9rem !important; }
+        }
     </style>
 </head>
 <body>
@@ -1124,7 +1107,7 @@
     
     <nav id="navbar">
         <a href="#inicio" class="logo">
-            <img src="mbc.png" alt="Mango BC" class="nav-logo">
+            <img src="mbc.png" alt="Mango BC" class="nav-logo" style="height: 35px; width: auto; display: block; margin-right: 15px;">
         </a>
         
         <div class="hamburger" id="hamburger">
@@ -1219,6 +1202,18 @@
                 <a href="franquicias.html" class="btn-outline-dark" style="width: 100%; margin-top: auto;">Conocer franquicias</a>
             </div>
 
+            <div class="venta-dios-card">
+                <h3 style="font-size: 1.6rem; color: var(--dark); font-family: 'Montserrat'; font-weight: 900; margin-bottom: 8px; text-transform: uppercase;">Mango Logistics</h3>
+                <p style="color: #666; font-size: 0.95rem; margin-bottom: 15px;">Llevamos tu marca a los puntos de venta clave, optimizando costos de distribución y tiempos de entrega.</p>
+                
+                <ul class="vd-features">
+                    <li>Reducción de costos operativos</li>
+                    <li>Monitoreo de tiempos de entrega</li>
+                    <li>Conexión directa con canales retail</li>
+                </ul>
+                <a href="#contacto" class="btn-outline-dark" style="width: 100%; margin-top: auto;">Saber más</a>
+            </div>
+
         </div>
     </section>
 
@@ -1253,7 +1248,7 @@
                     <div class="bento-inner">
                         <div class="bento-front">
                             <h3>+<span class="bento-counter" data-target="400">0</span></h3>
-                            <p>Rutas de distribution</p>
+                            <p>Rutas de distribución</p>
                             <div class="flip-hint-bento">↺</div>
                         </div>
                         <div class="bento-back">
@@ -1263,7 +1258,8 @@
                     </div>
                 </div>
 
-                <div class="bento-flip-card" id="tarjeta-mapa"> <div class="bento-inner">
+                <div class="bento-flip-card" id="tarjeta-mapa"> 
+                    <div class="bento-inner">
                         <div class="bento-front">
                             <h3 class="texto-largo">LATAM</h3>
                             <p>Compañía Global</p>
@@ -1369,87 +1365,6 @@
                         <p>Convertimos un buen producto en un modelo de negocio sólido y listo para crecer.</p>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="unidades" id="unidades">
-        <div class="reveal">
-            <h2 class="section-title">Mango <br><span>Logistics</span></h2>
-            <p class="section-desc">Integramos soluciones comerciales para cada tipo de aliado estratégico.</p>
-        </div>
-        
-        <div class="carousel-container reveal delay-1">
-            <div class="unidades-grid" id="carousel-track">
-                
-                <div class="unidad-card">
-                    <div class="card-inner">
-                        <div class="card-front">
-                            <div class="u-icon"><img src="iconos-1-01.png" alt="Icono Franquicias" loading="lazy" decoding="async"></div>
-                            <h3>Franquicias | Inversión Inteligente:</h3>
-                            <div class="u-sub">Modelo Probado</div>
-                            <p>Un sistema de negocio diseñado para escalar rápido y vender desde el primer día.</p>
-                            <div class="flip-hint">Ver beneficios ↺</div>
-                        </div>
-                        <div class="card-back">
-                            <h3>Beneficios</h3>
-                            <ul>
-                                <li>Sistema diseñado para vender rápido, no para cocinar lento.</li>
-                                <li>No cobramos cuota de franquicia (ganamos contigo, no de ti)</li>
-                                <li>Diseñado para abrir varias sucursales, no solo una</li>
-                                <li>El modelo se opera practicamente solo</li>
-                                <li>Esto no depende del chef, depende del sistema.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="unidad-card">
-                    <div class="card-inner">
-                        <div class="card-front">
-                            <div class="u-icon"><img src="iconos-1-02.png" alt="Icono Marca Propia" loading="lazy" decoding="async"></div>
-                            <h3>Marca Propia | Maquila de Especialidad:</h3>
-                            <div class="u-sub">Tu marca, nuestra planta</div>
-                            <p>Ponemos nuestras plantas a tu servicio. Desarrollamos tu línea de productos con total confidencialidad y eficiencia.</p>
-                            <div class="flip-hint">Ver beneficios ↺</div>
-                        </div>
-                        <div class="card-back">
-                            <h3>Beneficios Clave</h3>
-                            <ul>
-                                <li>Desarrollo de fórmulas exclusivas.</li>
-                                <li>Capacidad de producción escalable.</li>
-                                <li>Confidencialidad absoluta en branding.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="unidad-card">
-                    <div class="card-inner">
-                        <div class="card-front">
-                            <div class="u-icon"><img src="iconos-1-03.png" alt="Icono Logistics" loading="lazy" decoding="async"></div>
-                            <h3>Logistics</h3>
-                            <div class="u-sub">Distribución Retail</div>
-                            <p>Llevamos tu marca a los puntos de venta clave, optimizando costos de distribución y tiempos de entrega.</p>
-                            <div class="flip-hint">Ver beneficios ↺</div>
-                        </div>
-                        <div class="card-back">
-                            <h3>Beneficios Clave</h3>
-                            <ul>
-                                <li>Reducción de costos operativos.</li>
-                                <li>Monitoreo de tiempos de entrega.</li>
-                                <li>Conexión directa con canales retail.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            
-            <div class="carousel-nav" id="carousel-nav">
-                <div class="carousel-dot active" data-index="0"></div>
-                <div class="carousel-dot" data-index="1"></div>
-                <div class="carousel-dot" data-index="2"></div>
             </div>
         </div>
     </section>
@@ -1705,6 +1620,45 @@
         </div>
     </footer>
 
+    <div class="contact-modal-overlay" id="contactModal">
+        <div class="contact-modal">
+            <button class="close-modal" onclick="closeContactModal()">✕</button>
+            
+            <div class="modal-content" id="modalContent">
+                <h3>SOLICITUD DE<br><span>CONTACTO</span></h3>
+                <p>Déjanos tus datos. Nuestro equipo de escalamiento se comunicará contigo en menos de 24 horas.</p>
+                
+                <form id="fakeContactForm">
+                    <div class="input-group">
+                        <input type="text" id="contact-nombre" placeholder="Nombre Completo" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" id="contact-email" placeholder="Correo Electrónico" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="tel" id="contact-telefono" placeholder="Teléfono a 10 dígitos" required>
+                    </div>
+                    <div class="input-group">
+                        <select id="contact-interes" required style="color: #666;">
+                            <option value="" disabled selected>Área de Interés</option>
+                            <option value="Ser Distribuidor (B2B)">Ser Distribuidor (B2B)</option>
+                            <option value="Emprendimiento (Kits)">Emprendimiento (Kits)</option>
+                            <option value="Franquicias Hot Rolls">Franquicias Hot Rolls</option>
+                            <option value="Mango Logistics">Mango Logistics</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-submit" id="submitBtn">ENVIAR INFORMACIÓN</button>
+                </form>
+            </div>
+
+            <div class="modal-success" id="modalSuccess">
+                <div class="success-icon">✓</div>
+                <h3 style="font-family: 'Montserrat'; font-weight: 900; color: var(--dark); font-size: 1.5rem; margin-bottom: 10px; text-transform: uppercase;">¡SOLICITUD <br><span>RECIBIDA!</span></h3>
+                <p style="color: #666; font-size: 0.95rem; line-height: 1.5;">Hemos registrado tus datos. Un asesor corporativo te contactará a la brevedad.</p>
+            </div>
+        </div>
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
@@ -1799,86 +1753,6 @@
         }, revealOptions);
 
         revealElements.forEach(el => revealObserver.observe(el));
-
-        if (window.innerWidth <= 992) {
-            const track = document.getElementById('carousel-track');
-            const dots = document.querySelectorAll('.carousel-dot');
-            const cards = track.querySelectorAll('.unidad-card');
-            const totalSlides = dots.length;
-            let currentIndex = 0;
-            let flipTimer, slideTimer, transitionTimer;
-            let carouselStarted = false;
-
-            const updateDots = (index) => {
-                dots.forEach(d => d.classList.remove('active'));
-                if(dots[index]) dots[index].classList.add('active');
-            };
-
-            const scrollToCard = (index) => {
-                if(!cards[index]) return;
-                const scrollPos = cards[index].offsetLeft - track.offsetLeft - (track.clientWidth - cards[index].clientWidth) / 2;
-                track.scrollTo({ left: scrollPos, behavior: 'smooth' });
-                updateDots(index);
-                currentIndex = index;
-            };
-
-            const clearTimers = () => {
-                clearTimeout(flipTimer);
-                clearTimeout(slideTimer);
-                clearTimeout(transitionTimer);
-                cards.forEach(c => c.classList.remove('is-flipped'));
-            };
-
-            const startAutoPlay = () => {
-                clearTimers();
-                
-                flipTimer = setTimeout(() => {
-                    if(cards[currentIndex]) cards[currentIndex].classList.add('is-flipped');
-
-                    slideTimer = setTimeout(() => {
-                        if(cards[currentIndex]) cards[currentIndex].classList.remove('is-flipped');
-
-                        transitionTimer = setTimeout(() => {
-                            currentIndex = (currentIndex + 1) % totalSlides;
-                            scrollToCard(currentIndex);
-                            startAutoPlay(); 
-                        }, 300);
-
-                    }, 2000);
-
-                }, 3000);
-            };
-
-            dots.forEach((dot, idx) => {
-                dot.addEventListener('click', () => {
-                    scrollToCard(idx);
-                    if (carouselStarted) startAutoPlay(); 
-                });
-            });
-
-            track.addEventListener('scroll', () => {
-                const scrollLeft = track.scrollLeft;
-                const cardWidth = track.clientWidth; 
-                const index = Math.round(scrollLeft / cardWidth);
-                if (index !== currentIndex) {
-                    updateDots(index);
-                    currentIndex = index;
-                    if (carouselStarted) startAutoPlay(); 
-                }
-            });
-
-            const unidadesSection = document.getElementById('unidades');
-            const carouselObserver = new IntersectionObserver((entries) => {
-                if (entries[0].isIntersecting && !carouselStarted) {
-                    carouselStarted = true;
-                    startAutoPlay();
-                }
-            }, { threshold: 0.2 });
-
-            if (unidadesSection) {
-                carouselObserver.observe(unidadesSection);
-            }
-        }
 
         let lastScrollTop = 0;
         const navbarElement = document.getElementById('navbar');
@@ -1986,6 +1860,132 @@
             } else if (heroVideo) {
                 // Asegura que el video se mantenga invisible si bajamos muy rápido
                 heroVideo.style.opacity = 0;
+            }
+        });
+        
+        // Modal Contacto Flotante
+        const modalOverlay = document.getElementById('contactModal');
+        const fakeForm = document.getElementById('fakeContactForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const modalContent = document.getElementById('modalContent');
+        const modalSuccess = document.getElementById('modalSuccess');
+
+        function openContactModal() {
+            modalOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        function closeContactModal() {
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto'; 
+            setTimeout(() => {
+                fakeForm.reset();
+                modalContent.style.display = 'block';
+                modalSuccess.classList.remove('active');
+                submitBtn.classList.remove('loading');
+            }, 400);
+        }
+
+        // Envío de formulario modal flotante mediante mailto:
+        fakeForm.addEventListener('submit', function(e) {
+            e.preventDefault(); 
+            submitBtn.classList.add('loading');
+            
+            const nombre = document.getElementById('contact-nombre').value;
+            const email = document.getElementById('contact-email').value;
+            const telefono = document.getElementById('contact-telefono').value;
+            const interes = document.getElementById('contact-interes').value;
+
+            const asunto = encodeURIComponent("Nueva Solicitud de Contacto - Distribuidores");
+            const cuerpo = encodeURIComponent(`Hola, tenemos un nuevo prospecto desde el Botón Flotante:\n\nNombre: ${nombre}\nCorreo: ${email}\nTeléfono: ${telefono}\nÁrea de Interés: ${interes}`);
+            
+            window.location.href = `mailto:marketing@mangobc.com?subject=${asunto}&body=${cuerpo}`;
+
+            setTimeout(() => {
+                modalContent.style.display = 'none'; 
+                modalSuccess.classList.add('active'); 
+            }, 1500);
+        });
+        
+        // Envío del Hero a WhatsApp
+        document.getElementById('heroContactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtnHero');
+            btn.innerText = 'PROCESANDO...';
+            btn.style.pointerEvents = 'none';
+
+            const interes = document.getElementById('hero-interes').value;
+            const paquete = document.getElementById('hero-paquete') ? document.getElementById('hero-paquete').value : 'N/A';
+            const nombre = document.getElementById('hero-nombre').value;
+            const apellidos = document.getElementById('hero-apellidos').value;
+            const email = document.getElementById('hero-email').value;
+            const telefono = document.getElementById('hero-telefono').value;
+            const suscribir = document.getElementById('hero-marketing').checked ? 'Sí' : 'No';
+
+            const mensaje = `¡Hola! Vengo de la página web y me interesa una cotización.\n\n` +
+                            `Nombre: ${nombre} ${apellidos}\n` +
+                            `Teléfono: ${telefono}\n` +
+                            `Email: ${email}\n\n` +
+                            `Modelo de negocio: ${interes}\n` +
+                            `Paquete de interés: ${paquete}\n` +
+                            `Suscripción a Marketing: ${suscribir}`;
+
+            const urlWhatsapp = `https://api.whatsapp.com/send?phone=5214433327430&text=${encodeURIComponent(mensaje)}`;
+            window.open(urlWhatsapp, '_blank');
+
+            setTimeout(() => {
+                btn.innerText = '¡SOLICITUD ENVIADA!';
+                btn.style.background = '#4CAF50';
+                btn.style.color = '#FFF';
+                
+                setTimeout(() => {
+                    this.reset();
+                    btn.innerText = 'SOLICITAR COTIZACIÓN';
+                    btn.style.background = 'var(--mango)';
+                    btn.style.color = 'var(--dark)';
+                    btn.style.pointerEvents = 'auto';
+                    if(document.getElementById('hero-paquete')) document.getElementById('hero-paquete').value = '';
+                }, 3000);
+            }, 1500);
+        });
+        
+        // Menú Flotante Opciones
+        const floatingMenu = document.getElementById('floatingMenu');
+        const mainToggleBtn = document.getElementById('mainToggleBtn');
+        let isHovered = false;
+        let hoverTimeout; 
+
+        floatingMenu.addEventListener('mouseenter', () => {
+            clearTimeout(hoverTimeout); 
+            isHovered = true;
+            floatingMenu.classList.remove('collapsed');
+        });
+
+        floatingMenu.addEventListener('mouseleave', () => {
+            hoverTimeout = setTimeout(() => {
+                isHovered = false;
+                if (window.scrollY > window.innerHeight * 0.3) {
+                    floatingMenu.classList.add('collapsed');
+                }
+            }, 150);
+        });
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY < window.innerHeight * 0.3) {
+                floatingMenu.classList.remove('collapsed');
+            } else if (!isHovered) {
+                floatingMenu.classList.add('collapsed');
+            }
+        });
+
+        mainToggleBtn.addEventListener('click', (e) => {
+            if (floatingMenu.classList.contains('collapsed')) {
+                e.preventDefault(); 
+                floatingMenu.classList.remove('collapsed');
+                isHovered = true; 
+            } else {
+                floatingMenu.classList.add('collapsed');
+                isHovered = false;
             }
         });
     </script>
