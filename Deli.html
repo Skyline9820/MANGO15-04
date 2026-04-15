@@ -244,7 +244,8 @@
 
         /* KITS PRICING */
         .pricing-section { background: var(--deli-cream); }
-        .pricing-card { flex: 1 1 320px; max-width: 400px; text-decoration: none; color: inherit; display: flex; flex-direction: column; background: var(--deli-white); border-radius: 30px; padding: 40px 30px; border: 2px solid rgba(3,53,35,0.05); transition: all 0.3s ease; text-align: center; cursor: pointer; box-shadow: 0 10px 20px rgba(0,0,0,0.05);}
+        /* ¡AQUÍ ESTÁ EL CAMBIO DEL BORDE! */
+        .pricing-card { flex: 1 1 320px; max-width: 400px; text-decoration: none; color: inherit; display: flex; flex-direction: column; background: var(--deli-white); border-radius: 30px; padding: 40px 30px; border: 2px solid var(--deli-med-green); transition: all 0.3s ease; text-align: center; cursor: pointer; box-shadow: 0 10px 20px rgba(0,0,0,0.05);}
         
         .pricing-card:hover { background: var(--deli-yellow); transform: translateY(-10px) scale(1.02); border-color: var(--deli-yellow); box-shadow: 0 20px 40px rgba(255,208,26,0.3);}
         .pricing-card.featured { border-color: var(--deli-med-green); transform: scale(1.02); z-index: 2; box-shadow: 0 15px 30px rgba(0,0,0,0.1);}
