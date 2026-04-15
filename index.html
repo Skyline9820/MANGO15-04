@@ -49,7 +49,14 @@
            NAVEGACIÓN EFECTO CRISTAL Y DROPDOWN
            ========================================================= */
         nav {
-            position: fixed; width: 90%; top: 20px; left: 5%; padding: 15px 30px; 
+            position: fixed; 
+            width: 90%; 
+            max-width: 1800px;
+            top: 20px; 
+            left: 0; 
+            right: 0; 
+            margin: 0 auto;
+            padding: 15px 30px; 
             background: var(--glass-bg); 
             backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
             border: 1px solid var(--glass-border); 
@@ -993,7 +1000,7 @@
         }
 
         @media (max-width: 992px) {
-            nav { width: 100%; top: 0; left: 0; border-radius: 0; padding: 15px 5%; border: none; }
+            nav { width: 100%; top: 0; left: 0; right: 0; margin: 0; border-radius: 0; padding: 15px 5%; border: none; }
             .hamburger { display: flex; }
             .nav-links { position: fixed; top: 0; left: 100%; width: 100%; height: 100vh; background: var(--white); flex-direction: column; justify-content: center; align-items: center; gap: 40px; transition: left 0.4s ease; z-index: 1001; }
             .nav-links.active { left: 0; }
@@ -1093,7 +1100,7 @@
             .venta-dios-card p { font-size: 1.1rem !important; }
             .vd-features li { font-size: 1.1rem; }
             
-            nav { max-width: 1800px; left: 50%; transform: translateX(-50%); padding: 20px 50px; }
+            nav { padding: 20px 50px; }
             .nav-links a { font-size: 1rem; }
             .nav-cta { padding: 12px 30px; font-size: 0.9rem !important; }
         }
