@@ -586,13 +586,23 @@
     <script src="https://atom-plugin-io.web.app/atom-plugin-web.js"></script>
 
     <script>
-        // Preloader
-        window.addEventListener('load', () => {
-            const loader = document.getElementById('loader');
-            loader.style.opacity = '0';
-            setTimeout(() => loader.style.display = 'none', 500);
-        });
+// Preloader Optimizado
+window.addEventListener('load', () => {
+    hideLoader();
+});
 
+// Si después de 3.5 segundos no ha cargado, forzamos la salida
+setTimeout(() => {
+    hideLoader();
+}, 3500);
+
+function hideLoader() {
+    const loader = document.getElementById('loader');
+    if (loader && loader.style.display !== 'none') {
+        loader.style.opacity = '0';
+        setTimeout(() => loader.style.display = 'none', 500);
+    }
+}
         // ABANICO (5 BARRAS)
         const fanContainer = document.getElementById('fanContainer');
         const bars = Array.from(document.querySelectorAll('.bar'));
