@@ -92,7 +92,7 @@
         /* DIVISOR DE SECCIONES INTERNAS */
         .section-divider { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); margin: 60px 0; }
 
-        /* 1. HERO CON DOS COLUMNAS Y FORMULARIO (AJUSTADO A 1 VISTA) */
+        /* 1. HERO CON DOS COLUMNAS Y FORMULARIO */
         .hero-distribuidores { min-height: 100vh; display: flex; align-items: center; position: relative; background: var(--dark); padding: 90px 5% 150px; overflow: hidden; }
         .hero-video-wrapper { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
         
@@ -149,7 +149,6 @@
         
         .stats-beneficios-wrapper .section-title { color: var(--dark); }
         
-        /* Modificado para que suba y se superponga más sobre el Hero */
         .stats-grid { 
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
@@ -204,17 +203,150 @@
         .step h4 { font-family: 'Montserrat'; font-weight: 700; font-size: 1rem; color: var(--dark); margin-bottom: 8px; text-transform: uppercase;}
         .step p { color: #666; font-size: 0.85rem; line-height: 1.5;}
 
-        /* 4. KITS DE NIVELES Y MIXTOS */
-        .seccion-kits { background-color: #000000; padding: 100px 5%; position: relative; z-index: 2; }
-        .seccion-kits .section-title { color: var(--white); margin-bottom: 60px; }
+        /* =========================================
+           4. SECCIÓN KITS (Fondo Cielo Animado CSS)
+           ========================================= */
+        .seccion-kits { 
+            background-color: var(--dark); 
+            padding: 100px 5%; 
+            position: relative; 
+            z-index: 2; 
+            overflow: hidden; 
+        }
         
+        /* Aseguramos que TODO el contenido original esté por encima del fondo */
+        .seccion-kits > * { position: relative; z-index: 2; }
+        .seccion-kits .section-title { color: var(--white); margin-bottom: 60px; }
+
+        /* INICIO FONDO ANIMADO CSS */
+        .animated-bg-elements {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            overflow: hidden;
+            z-index: 0 !important; /* Detrás de los kits */
+            pointer-events: none; 
+            background-color: var(--dark);
+        }
+
+        .scene-grid-overlay {
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+            background-size: 60px 60px;
+            animation: moveGrid 20s linear infinite;
+        }
+        @keyframes moveGrid {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(60px, 60px); }
+        }
+
+        .glow-shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.2;
+            animation: superPulse 10s infinite ease-in-out alternate;
+        }
+        .glow-1 { width: 500px; height: 500px; background: var(--mango); top: -10%; left: -10%; animation-delay: 0s; }
+        .glow-2 { width: 700px; height: 700px; background: var(--white); bottom: -20%; right: -10%; animation-delay: -4s; opacity: 0.15; filter: blur(150px); }
+        .glow-3 { width: 450px; height: 450px; background: var(--mango); top: 50%; left: 50%; transform: translate(-50%, -50%); animation-delay: -7s; }
+
+        @keyframes superPulse {
+            0% { transform: translate(0, 0) scale(1); opacity: 0.15; }
+            50% { transform: translate(80px, -50px) scale(1.3); opacity: 0.25; }
+            100% { transform: translate(-50px, 80px) scale(0.9); opacity: 0.15; }
+        }
+
+        .dynamic-line {
+            position: absolute;
+            height: 2px;
+            width: 200%;
+            background: linear-gradient(90deg, transparent, var(--mango), transparent);
+            opacity: 0.3;
+            transform-origin: left center;
+            animation: shootLine linear infinite;
+        }
+        .line-1 { top: 5%; left: -50%; animation-duration: 5s; transform: rotate(-25deg); }
+        .line-2 { top: 30%; left: -50%; animation-duration: 8s; animation-delay: 2s; transform: rotate(-25deg); background: linear-gradient(90deg, transparent, var(--white), transparent); opacity: 0.2; height: 1px; }
+        .line-3 { top: 55%; left: -50%; animation-duration: 6s; animation-delay: 4s; transform: rotate(-25deg); }
+        .line-4 { top: 80%; left: -50%; animation-duration: 10s; animation-delay: 1s; transform: rotate(-25deg); background: linear-gradient(90deg, transparent, var(--white), transparent); opacity: 0.15; height: 3px; filter: blur(2px);}
+        .line-5 { top: -20%; left: 100%; width: 150%; height: 4px; filter: blur(3px); animation-duration: 12s; animation-delay: 3s; transform: rotate(145deg); opacity: 0.2; }
+
+        @keyframes shootLine {
+            0% { transform: translateX(0) rotate(-25deg); opacity: 0; }
+            20% { opacity: 0.4; }
+            80% { opacity: 0.4; }
+            100% { transform: translateX(100vw) rotate(-25deg); opacity: 0; }
+        }
+
+        .particles-layer {
+            position: absolute;
+            width: 100%; height: 300%; /* Ampliado para cubrir la gran altura de la sección kits */
+            bottom: 0; left: 0;
+            overflow: hidden;
+        }
+        .particles {
+            position: absolute;
+            bottom: -10px;
+            width: 4px;
+            height: 4px;
+            background: transparent;
+            border-radius: 50%;
+            box-shadow: 
+                10vw 10vh var(--mango), 20vw 80vh var(--white), 30vw 30vh var(--mango), 40vw 60vh var(--white),
+                50vw 20vh var(--mango), 60vw 90vh var(--white), 70vw 40vh var(--mango), 80vw 70vh var(--white),
+                90vw 15vh var(--mango), 95vw 85vh var(--white), 5vw 50vh var(--mango), 15vw 95vh var(--white),
+                25vw 5vh var(--mango), 35vw 75vh var(--white), 45vw 25vh var(--mango), 55vw 85vh var(--white),
+                65vw 10vh var(--mango), 75vw 55vh var(--white), 85vw 35vh var(--mango), 12vw 65vh var(--white),
+                22vw 45vh var(--mango), 32vw 25vh var(--white), 42vw 85vh var(--mango), 52vw 15vh var(--white),
+                62vw 65vh var(--mango), 72vw 25vh var(--white), 82vw 95vh var(--mango), 92vw 45vh var(--white);
+            animation: riseStars linear infinite;
+        }
+        .particles-1 { animation-duration: 25s; filter: blur(1px); opacity: 0.7;}
+        .particles-2 { animation-duration: 40s; width: 2px; height: 2px; filter: blur(0px); opacity: 0.4;}
+        .particles-3 { animation-duration: 15s; width: 6px; height: 6px; filter: blur(3px); opacity: 0.9;}
+
+        @keyframes riseStars {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-100%); }
+        }
+
+        .plus-mark {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            opacity: 0.4;
+            animation: spinFloat 15s linear infinite;
+        }
+        .plus-mark::before, .plus-mark::after { content: ''; position: absolute; background: var(--white); }
+        .plus-mark::before { top: 50%; left: 0; width: 100%; height: 2px; transform: translateY(-50%); }
+        .plus-mark::after { top: 0; left: 50%; width: 2px; height: 100%; transform: translateX(-50%); }
+        
+        .plus-1 { top: 15%; left: 25%; animation-duration: 20s; }
+        .plus-2 { top: 85%; left: 75%; animation-duration: 25s; animation-direction: reverse; transform: scale(1.5); }
+        .plus-3 { top: 45%; left: 90%; animation-duration: 18s; }
+        .plus-4 { top: 65%; left: 5%; animation-duration: 22s; animation-direction: reverse; }
+        .plus-5 { top: 25%; left: 60%; animation-duration: 15s; }
+
+        .plus-1::before, .plus-1::after, .plus-4::before, .plus-4::after { background: var(--mango); }
+
+        @keyframes spinFloat {
+            0% { transform: translateY(0) rotate(0deg) scale(1); }
+            50% { transform: translateY(-30px) rotate(180deg) scale(1.2); }
+            100% { transform: translateY(0) rotate(360deg) scale(1); }
+        }
+        /* FIN FONDO ANIMADO CSS */
+
         /* Grids para Kits de 4 Marcas */
         .grid-4-marcas { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1400px; margin: 0 auto; width: 100%; }
 
         /* Grids para Kits Mixtos (hasta 3 columnas) */
         .grid-3-mixtos { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 350px)); gap: 30px; width: 100%; max-width: 1200px; margin: 0 auto; justify-content: center; }
 
-        .kit-card { background: #1C1C1C; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.5); display: flex; flex-direction: column; position: relative; overflow: hidden; transition: border-color 0.4s, transform 0.4s; min-height: 520px; padding: 0; text-align: left; }
+        .kit-card { background: rgba(28,28,28,0.8); border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.5); display: flex; flex-direction: column; position: relative; overflow: hidden; transition: border-color 0.4s, transform 0.4s; min-height: 520px; padding: 0; text-align: left; backdrop-filter: blur(10px); }
         .kit-card:hover { border-color: var(--mango); transform: translateY(-5px); box-shadow: 0 15px 40px rgba(253, 234, 20, 0.1); }
 
         /* Variación para Tarjetas Mixtas */
@@ -725,6 +857,26 @@
 
     <section class="seccion-kits" id="kits">
         
+        <div class="animated-bg-elements">
+            <div class="scene-grid-overlay"></div>
+            <div class="glow-shape glow-1"></div>
+            <div class="glow-shape glow-2"></div>
+            <div class="glow-shape glow-3"></div>
+            <div class="dynamic-line line-1"></div>
+            <div class="dynamic-line line-2"></div>
+            <div class="dynamic-line line-3"></div>
+            <div class="dynamic-line line-4"></div>
+            <div class="dynamic-line line-5"></div>
+            <div class="particles-layer"><div class="particles particles-1"></div></div>
+            <div class="particles-layer"><div class="particles particles-2"></div></div>
+            <div class="particles-layer"><div class="particles particles-3"></div></div>
+            <div class="plus-mark plus-1"></div>
+            <div class="plus-mark plus-2"></div>
+            <div class="plus-mark plus-3"></div>
+            <div class="plus-mark plus-4"></div>
+            <div class="plus-mark plus-5"></div>
+        </div>
+
         <h2 class="section-title fade-in">KITS PARA <span>EMPRENDEDOR</span></h2>
         <div class="grid-4-marcas fade-in">
             <div class="kit-card" data-type="Emprendimiento (Kits)">
@@ -1161,7 +1313,6 @@
         </div>
 
     </section>
-
     <section class="faq-industrial" id="faq">
         <h2 class="section-title fade-in">PREGUNTAS <span>FRECUENTES</span></h2>
         
