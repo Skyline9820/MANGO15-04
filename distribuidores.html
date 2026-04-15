@@ -177,7 +177,7 @@
         /* 3. PROCESO (Claro) */
         .proceso-section { background: var(--light-bg); color: var(--dark); }
         .proceso-section .section-title { color: var(--dark); }
-        .timeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1000px; width: 100%; text-align: center; }
+        .timeline { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; max-width: 1200px; width: 100%; text-align: center; }
         
         .icon-circle { 
             width: 130px; 
@@ -204,7 +204,7 @@
         .step p { color: #666; font-size: 0.85rem; line-height: 1.5;}
 
         /* =========================================
-           4. SECCIÓN KITS (Fondo Cielo Animado CSS)
+           4. SECCIÓN KITS (Fondo Cielo Animado CSS Corregido)
            ========================================= */
         .seccion-kits { 
             background-color: var(--dark); 
@@ -216,7 +216,7 @@
         
         /* Aseguramos que TODO el contenido original esté por encima del fondo */
         .seccion-kits > * { position: relative; z-index: 2; }
-        .seccion-kits .section-title { color: var(--white); margin-bottom: 60px; }
+        .seccion-kits .section-title { color: var(--white); margin-bottom: 20px; }
 
         /* INICIO FONDO ANIMADO CSS */
         .animated-bg-elements {
@@ -284,8 +284,9 @@
 
         .particles-layer {
             position: absolute;
-            width: 100%; height: 300%; /* Ampliado para cubrir la gran altura de la sección kits */
-            bottom: 0; left: 0;
+            width: 100%; 
+            height: 100%; 
+            top: 0; left: 0;
             overflow: hidden;
         }
         .particles {
@@ -295,6 +296,7 @@
             height: 4px;
             background: transparent;
             border-radius: 50%;
+            /* Sombras ampliadas para cubrir toda la sección, por muy alta que sea */
             box-shadow: 
                 10vw 10vh var(--mango), 20vw 80vh var(--white), 30vw 30vh var(--mango), 40vw 60vh var(--white),
                 50vw 20vh var(--mango), 60vw 90vh var(--white), 70vw 40vh var(--mango), 80vw 70vh var(--white),
@@ -302,16 +304,21 @@
                 25vw 5vh var(--mango), 35vw 75vh var(--white), 45vw 25vh var(--mango), 55vw 85vh var(--white),
                 65vw 10vh var(--mango), 75vw 55vh var(--white), 85vw 35vh var(--mango), 12vw 65vh var(--white),
                 22vw 45vh var(--mango), 32vw 25vh var(--white), 42vw 85vh var(--mango), 52vw 15vh var(--white),
-                62vw 65vh var(--mango), 72vw 25vh var(--white), 82vw 95vh var(--mango), 92vw 45vh var(--white);
+                62vw 65vh var(--mango), 72vw 25vh var(--white), 82vw 95vh var(--mango), 92vw 45vh var(--white),
+                /* Partículas extra para asegurar cobertura en áreas altas */
+                15vw 120vh var(--mango), 35vw 150vh var(--white), 55vw 110vh var(--mango), 75vw 180vh var(--white),
+                85vw 130vh var(--mango), 5vw 160vh var(--white), 45vw 140vh var(--mango), 95vw 190vh var(--white),
+                25vw 170vh var(--mango), 65vw 125vh var(--white);
             animation: riseStars linear infinite;
         }
-        .particles-1 { animation-duration: 25s; filter: blur(1px); opacity: 0.7;}
-        .particles-2 { animation-duration: 40s; width: 2px; height: 2px; filter: blur(0px); opacity: 0.4;}
-        .particles-3 { animation-duration: 15s; width: 6px; height: 6px; filter: blur(3px); opacity: 0.9;}
+        .particles-1 { animation-duration: 35s; filter: blur(1px); opacity: 0.7;}
+        .particles-2 { animation-duration: 50s; width: 2px; height: 2px; filter: blur(0px); opacity: 0.4;}
+        .particles-3 { animation-duration: 25s; width: 6px; height: 6px; filter: blur(3px); opacity: 0.9;}
 
+        /* Aquí estaba el error. -200vh asegura que crucen todo hacia arriba */
         @keyframes riseStars {
             0% { transform: translateY(0); }
-            100% { transform: translateY(-100%); }
+            100% { transform: translateY(-200vh); } 
         }
 
         .plus-mark {
@@ -415,7 +422,7 @@
 
         /* 5. FAQ (Claro) */
         .faq-industrial { background: var(--white); padding-top: 40px; border-top: 1px solid rgba(0,0,0,0.02); padding-bottom: 60px;}
-        .faq-accordion { max-width: 800px; width: 100%; display: flex; flex-direction: column; gap: 12px; }
+        .faq-accordion { max-width: 800px; width: 100%; display: flex; flex-direction: column; gap: 12px; margin: 0 auto;}
         .accordion-item { background: var(--box-bg); border: 1px solid var(--box-border); border-radius: 12px; overflow: hidden; transition: 0.3s; }
         
         .accordion-header { padding: 20px 25px; display: flex; justify-content: space-between; align-items: center; text-decoration: none; cursor: pointer; }
@@ -431,7 +438,7 @@
         .accordion-item.active .accordion-icon::after { background: var(--dark); }
         
         .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
-        .accordion-content p { padding: 0 25px 25px; color: #555; font-size: 0.95rem; line-height: 1.6; }
+        .accordion-content p { padding: 0 25px 25px; color: #555; font-size: 0.95rem; line-height: 1.6; margin: 0; }
 
         /* 6. CTA FINAL (Oscuro) */
         .cta-final { text-align: center; padding: 80px 5%; background: var(--dark); border-top: 1px solid rgba(255,255,255,0.05); }
@@ -484,14 +491,14 @@
 
             .stats-beneficios-wrapper { padding: 0 5% 40px; }
             .stats-grid { 
-                grid-template-columns: repeat(3, 1fr); 
-                gap: 10px; 
+                grid-template-columns: repeat(2, 1fr); 
+                gap: 15px; 
                 margin: -30px auto 40px auto;
-                padding: 20px 10px;
+                padding: 20px;
                 border-radius: 16px;
             }
-            .stat-number { font-size: 1.4rem; }
-            .stat-label { font-size: 0.6rem; }
+            .stat-number { font-size: 1.8rem; }
+            .stat-label { font-size: 0.7rem; }
 
             .grid-beneficios { grid-template-columns: 1fr; gap: 12px; }
             .floating-card { padding: 20px 15px; border-radius: 12px; box-shadow: none; }
@@ -732,8 +739,8 @@
         
         <div class="hero-container">
             <div class="hero-copy fade-in">
-                <h1 class="hero-title">ESCALA TU<br><span>NEGOCIO</span></h1>
-                <p class="hero-subtitle">Conviértete en un distribuidor autorizado de nuestras marcas líderes y domina tu mercado local con el respaldo de Mango Logistics.</p>
+                <h1 class="hero-title">ESCALA O INICIA TU<br><span>NEGOCIO</span></h1>
+                <p class="hero-subtitle">Impulsa tu red con productos de alta rotación y respaldo nacional e internacional. Únete a nuestra red de más de 300 distribuidores. Te ofrecemos marcas validadas en retail, márgenes competitivos y una cadena de suministro diseñada para tu crecimiento.</p>
             </div>
 
             <div class="hero-form-wrapper fade-in" style="transition-delay: 0.2s;">
@@ -796,16 +803,16 @@
         
         <div class="stats-grid fade-in">
             <div class="stat-item">
-                <div class="stat-number"><span class="counter" data-target="1500">0</span>+</div>
-                <div class="stat-label">Tons / Mes</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number"><span class="counter" data-target="25000">0</span>+</div>
-                <div class="stat-label">Puntos Venta</div>
-            </div>
-            <div class="stat-item">
                 <div class="stat-number"><span class="counter" data-target="100">0</span>%</div>
-                <div class="stat-label">Cobertura</div>
+                <div class="stat-label">Cobertura Nacional</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number"><span class="counter" data-target="400">0</span>+</div>
+                <div class="stat-label">Rutas de Distribución</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number"><span class="counter" data-target="100000">0</span>+</div>
+                <div class="stat-label">Puntos de Venta</div>
             </div>
         </div>
 
@@ -813,16 +820,16 @@
         
         <div class="grid-beneficios fade-in">
             <div class="floating-card">
+                <h3>Alta Rotación</h3>
+                <p>Productos testeados en cadenas como OXXO o MERZA garantizando demanda constante.</p>
+            </div>
+            <div class="floating-card">
                 <h3>Márgenes Atractivos</h3>
-                <p>Precios preferenciales de fábrica diseñados para maximizar tu rentabilidad en ventas.</p>
+                <p>Estructura de precios diseñada para que tu operación sea rentable desde el primer día.</p>
             </div>
             <div class="floating-card">
-                <h3>Demanda Comprobada</h3>
-                <p>Acceso a productos líderes de alta rotación, marcas posicionadas en el consumidor.</p>
-            </div>
-            <div class="floating-card">
-                <h3>Soporte Logístico</h3>
-                <p>Abastecimiento continuo respaldado por la infraestructura nacional de Mango Logistics.</p>
+                <h3>Productos Nuevos Cada Mes</h3>
+                <p>Nunca te quedas sin opciones, tu portafolio crece y crece tu ticket.</p>
             </div>
         </div>
     </div>
@@ -835,22 +842,27 @@
             <div class="step">
                 <div class="icon-circle"><img src="proceso-distribuidor-iconos-01.png" alt="Contacto"></div>
                 <h4>Contacto</h4>
-                <p>Llena y envía el formulario inicial.</p>
+                <p>Nuestros ejecutivos te darán toda la información necesaria.</p>
             </div>
             <div class="step">
-                <div class="icon-circle"><img src="proceso-distribuidor-iconos-02.png" alt="Evaluación"></div>
-                <h4>Evaluación</h4>
-                <p>Análisis de tu perfil y zona local.</p>
+                <div class="icon-circle"><img src="proceso-distribuidor-iconos-02.png" alt="Elección"></div>
+                <h4>Elección</h4>
+                <p>Elige los paquetes o volumen de compra que mejor se adapte a tu necesidad.</p>
             </div>
             <div class="step">
-                <div class="icon-circle"><img src="proceso-distribuidor-iconos-03.png" alt="Selección"></div>
-                <h4>Selección</h4>
-                <p>Eliges el volumen y proyección.</p>
+                <div class="icon-circle"><img src="proceso-distribuidor-iconos-03.png" alt="Cotización"></div>
+                <h4>Cotización</h4>
+                <p>Recibes tu propuesta a la medida.</p>
+            </div>
+            <div class="step">
+                <div class="icon-circle"><img src="proceso-distribuidor-iconos-04.png" alt="Pago y Envío"></div>
+                <h4>Pago y Envío</h4>
+                <p>Realiza el pago y recibe tu producto de 3 a 5 días hábiles.</p>
             </div>
             <div class="step">
                 <div class="icon-circle"><img src="proceso-distribuidor-iconos-04.png" alt="Arranque"></div>
                 <h4>Arranque</h4>
-                <p>Acuerdo, mercancía y capacitación.</p>
+                <p>Arranca con la asesoría y acompañamiento de tu ejecutivo asignado.</p>
             </div>
         </div>
     </section>
@@ -878,6 +890,10 @@
         </div>
 
         <h2 class="section-title fade-in">KITS PARA <span>EMPRENDEDOR</span></h2>
+        <div class="fade-in" style="text-align: center; margin-bottom: 40px;">
+            <p style="color: #AAA; font-size: 1.1rem; max-width: 800px; margin: 0 auto;">¿Quieres emprender o construir tu negocio de distribución?<br>Comienza con kits listos para llevarte del inicio a tus primeras ventas.</p>
+        </div>
+
         <div class="grid-4-marcas fade-in">
             <div class="kit-card" data-type="Emprendimiento (Kits)">
                 <h3 class="kit-card-title">DELI <span>BARRAS</span></h3>
@@ -1096,6 +1112,10 @@
         <div class="section-divider fade-in"></div>
 
         <h2 class="section-title fade-in">KITS PARA <span>DISTRIBUIDOR</span></h2>
+        <div class="fade-in" style="text-align: center; margin-bottom: 40px;">
+            <p style="color: #AAA; font-size: 1.1rem; max-width: 800px; margin: 0 auto;">¿Ya tienes una ruta de distribución?<br>Expándela con kits listos para vender desde el primer día.</p>
+        </div>
+
         <div class="grid-4-marcas fade-in">
             <div class="kit-card" data-type="Ser Distribuidor (B2B)">
                 <h3 class="kit-card-title">DELI <span>BARRAS</span></h3>
@@ -1313,17 +1333,18 @@
         </div>
 
     </section>
+    
     <section class="faq-industrial" id="faq">
         <h2 class="section-title fade-in">PREGUNTAS <span>FRECUENTES</span></h2>
         
         <div class="faq-accordion fade-in">
             <div class="accordion-item">
                 <a href="javascript:void(0);" class="accordion-header">
-                    <h3>¿Cuál es el margen de utilidad garantizado?</h3>
+                    <h3>¿Cuál es la inversión mínima para comenzar a trabajar con Mango Business Center?</h3>
                     <div class="accordion-icon"></div>
                 </a>
                 <div class="accordion-content">
-                    <p>El modelo B2B está diseñado para garantizar márgenes preferenciales superiores a la media, permitiendo rentabilidad competitiva.</p>
+                    <p>Contamos con paquetes de arranque desde $4,800 MXN que incluyen un mix de nuestros productos con mayor rotación y exhibidores de regalo para facilitar tu primera venta.</p>
                 </div>
             </div>
 
@@ -1333,27 +1354,17 @@
                     <div class="accordion-icon"></div>
                 </a>
                 <div class="accordion-content">
-                    <p>Al firmar el acuerdo "Nivel Estatal", no autorizaremos nuevos distribuidores directos dentro de tus límites territoriales protegidos.</p>
+                    <p>En Mango Business Center reconocemos a los distribuidores que hacen crecer su zona. Evaluamos la exclusividad territorial basándonos en el volumen de compra mensual y el historial de cumplimiento de objetivos de ventas en la zona solicitada.</p>
                 </div>
             </div>
 
             <div class="accordion-item">
                 <a href="javascript:void(0);" class="accordion-header">
-                    <h3>¿Cuál es el tiempo de entrega de Mango Logistics?</h3>
+                    <h3>¿Cuál es el tiempo de entrega y la cobertura logística?</h3>
                     <div class="accordion-icon"></div>
                 </a>
                 <div class="accordion-content">
-                    <p>Los tiempos varían de 3 a 7 días hábiles. Para pedidos masivos, tu ejecutivo de cuenta gestionará envíos prioritarios.</p>
-                </div>
-            </div>
-
-            <div class="accordion-item">
-                <a href="javascript:void(0);" class="accordion-header">
-                    <h3>¿Ofrecen líneas de crédito para mayoristas?</h3>
-                    <div class="accordion-icon"></div>
-                </a>
-                <div class="accordion-content">
-                    <p>Tras 6 meses de operaciones de contado con volumen constante, evaluaremos la opción de abrir líneas de crédito comerciales.</p>
+                    <p>Despachamos pedidos a todo México. El tiempo de entrega promedio es de 3 a 5 días hábiles, dependiendo de tu ubicación y el volumen del pedido.</p>
                 </div>
             </div>
         </div>
